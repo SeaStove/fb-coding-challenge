@@ -13,3 +13,30 @@ a {
   color: #333;
   text-decoration: none;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "artists artist-details";
+  grid-gap: 10px;
+}
+
+.artist-details {
+  grid-area: artist-details;
+  /* text-align: center; */
+  margin: auto;
+  width: 90%;
+  height: 90vh;
+  padding: 10px;
+  /* border: 1px solid #2224261a; */
+  /* display: flex; */
+  /* align-items: center; */
+}
+
+.artists {
+  margin: 10px;
+  grid-area: artists;
+  width: 100%;
+  height: 90vh;
+}

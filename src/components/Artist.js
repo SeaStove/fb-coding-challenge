@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Card, Image } from "semantic-ui-react";
 
 export class Artist extends Component {
-
   render() {
-    const { artistID, firstName, lastName, imageURL, art } = this.props.artistInfo;
+    const { firstName, lastName, art, imageURL } = this.props.artist;
     return (
-      <div style={this.getStyle()}>
-        <img src={imageURL}></img>
-        <h3 style={{float:'right'}}>{firstName + " " + lastName}</h3>
-        <h4 style={{float:'right'}}>{art}</h4>
+      <div className="artist">
+        <Card fluid href="#card-example-link-card">
+          <Card.Content>
+            <Image floated="left" size="mini" src={imageURL} circular />
+            <Card.Header>{firstName + " " + lastName} </Card.Header>
+            <Card.Meta>{art}</Card.Meta>
+          </Card.Content>
+        </Card>
       </div>
     );
   }
@@ -17,7 +21,7 @@ export class Artist extends Component {
 
 //PropTypes
 Artist.propTypes = {
-  artistInfo: PropTypes.object.isRequired
+  artist: PropTypes.object.isRequired
 };
 
 export default Artist;
