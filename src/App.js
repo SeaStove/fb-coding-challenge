@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import ArtistList from "./components/ArtistList.js";
 import ArtistDetails from "./components/ArtistDetails";
 import "semantic-ui-css/semantic.min.css";
@@ -86,40 +87,65 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Loader style={{ display: this.state.loading ? "block" : "none" }} />
-        <Container
-          textAlign="center"
-          style={{ display: this.state.loadingFailed ? "block" : "none" }}
-        >
-          <p>API needs to wake up. </p>
-          <p>
-            Please go to{" "}
-            <a
-              href="https://fb-assessment.glitch.me/artists"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              https://fb-assessment.glitch.me/artists
-            </a>{" "}
-            to reactivate it.
-          </p>
-        </Container>
-        <div className="grid-container">
-          <div className="artists">
-            <ArtistList
-              artists={this.state.artists}
-              selectArtist={this.selectArtist}
-              selectedArtist={this.state.selectedArtist}
-            />
-          </div>
-          <ArtistDetails
-            selectedArtist={this.state.selectedArtist}
-            loading={this.state.loading}
-            loadingFailed={this.state.loadingFailed}
+      <Router>
+        <div className="App">
+          <Container
+            textAlign="center"
+            style={{
+              display: this.state.loadingFailed ? "block" : "none"
+            }}
+          >
+            <p>API needs to wake up. </p>
+            <p>
+              Please go to{" "}
+              <a
+                href="https://fb-assessment.glitch.me/artists"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://fb-assessment.glitch.me/artists
+              </a>{" "}
+              to reactivate it.
+            </p>
+          </Container>
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <React.Fragment>
+                <Loader
+                  style={{ display: this.state.loading ? "block" : "none" }}
+                />
+                <div className="grid-container">
+                  <div className="artists">
+                    <ArtistList
+                      artists={this.state.artists}
+                      selectArtist={this.selectArtist}
+                      selectedArtist={this.state.selectedArtist}
+                    />
+                  </div>
+                  <ArtistDetails
+                    selectedArtist={this.state.selectedArtist}
+                    loading={this.state.loading}
+                    loadingFailed={this.state.loadingFailed}
+                  />
+                </div>
+              </React.Fragment>
+            )}
+          />
+          <Route
+            exact
+            path="/artist"
+            render={props => (
+              <ArtistDetails
+                selectedArtist={this.state.selectedArtist}
+                loading={this.state.loading}
+                loadingFailed={this.state.loadingFailed}
+              />
+            )}
           />
         </div>
-      </div>
+      </Router>
     );
   }
 }

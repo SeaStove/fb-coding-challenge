@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Image, Header, Grid, Segment } from "semantic-ui-react";
+import { Image, Header, Grid, Segment, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 function getAge(birthDateString) {
   var today = new Date();
@@ -50,6 +51,12 @@ export class ArtistDetails extends Component {
               <p className="art">{art}</p>
               <p>{dateOfBirth + " (Age " + getAge(dateOfBirth) + ")"}</p>
               <p>{"Born in " + placeOfBirth}</p>
+              <Link to="artist">
+                <Icon
+                  name="arrow alternate circle right outline"
+                  size="large"
+                />
+              </Link>
             </Grid.Column>
           </Grid>
         </Segment>
