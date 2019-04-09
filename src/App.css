@@ -24,14 +24,10 @@ a {
 
 .artist-details {
   grid-area: artist-details;
-  /* text-align: center; */
   margin: auto;
   width: 90%;
   height: 90vh;
   padding: 10px;
-  /* border: 1px solid #2224261a; */
-  /* display: flex; */
-  /* align-items: center; */
 }
 
 .artists {
@@ -39,4 +35,14 @@ a {
   grid-area: artists;
   width: 100%;
   height: 90vh;
+}
+
+.error-screen {
+  margin: 10px auto;
+  width: 90%;
+  height: 100vh;
+}
+
+.art {
+  text-transform: capitalize;
 }
