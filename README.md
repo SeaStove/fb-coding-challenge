@@ -9,4 +9,5 @@ Overall I'm pretty happy with the UI, error handling, and logic. The only thing 
 download and run by typing
 
 npm install
+
 npm start
